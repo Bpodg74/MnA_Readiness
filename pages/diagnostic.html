@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M&A Readiness Diagnostic — Begin your assessment</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/diagnostic.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Cloudflare Turnstile (bot protection) -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body class="diag-body">
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">M&amp;A Readiness Index</a>
+      <span class="diag-step-label" id="stepLabel">Step 1 of 5</span>
+    </div>
+  </nav>
+
+  <!-- Progress -->
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width:20%"></div>
+  </div>
+
+  <!-- Diagnostic shell -->
+  <main class="diag-main">
+
+    <!-- ── STEP 1: Hook questions ── -->
+    <section class="diag-step active" id="step1">
+      <div class="diag-inner">
+        <p class="diag-eyebrow">Quick start — 3 questions</p>
+        <h2 class="diag-heading">Let's see where you stand</h2>
+        <p class="diag-intro">Answer these three questions honestly. We'll show you a preliminary signal before we go deeper.</p>
+
+        <div class="q-block" id="q1">
+          <p class="q-text">How would you describe your current financial documentation?</p>
+          <div class="q-options" data-q="q1">
+            <button class="q-opt" data-val="0">We have management accounts but nothing audited or investor-ready</button>
+            <button class="q-opt" data-val="1">We have 1–2 years of audited financials</button>
+            <button class="q-opt" data-val="2">We have 3+ years of audited financials with clean commentary</button>
+          </div>
+        </div>
+
+        <div class="q-block" id="q2">
+          <p class="q-text">If a buyer asked for a 5-year business plan today, how quickly could you provide one?</p>
+          <div class="q-options" data-q="q2">
+            <button class="q-opt" data-val="0">We don't have one — it would take months to build</button>
+            <button class="q-opt" data-val="1">We have an internal plan but it's not investor-ready</button>
+            <button class="q-opt" data-val="2">We have a structured model with assumptions and scenarios</button>
+          </div>
+        </div>
+
+        <div class="q-block" id="q3">
+          <p class="q-text">How clearly can you articulate what makes your business difficult to replicate?</p>
+          <div class="q-options" data-q="q3">
+            <button class="q-opt" data-val="0">We haven't formally documented this</button>
+            <button class="q-opt" data-val="1">We have a pitch deck but no structured competitive positioning</button>
+            <button class="q-opt" data-val="2">We have a clear, evidenced value proposition with client proof points</button>
+          </div>
+        </div>
+
+        <div class="diag-signal" id="signal1" style="display:none">
+          <div class="signal-inner">
+            <div class="signal-left">
+              <p class="signal-label">Early signal</p>
+              <p class="signal-score" id="signalScore">–</p>
+            </div>
+            <div class="signal-right">
+              <p class="signal-msg" id="signalMsg"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="diag-nav">
+          <button class="btn-next" id="next1" disabled onclick="goStep(2)">Continue &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STEP 2: Financials & Revenue ── -->
+    <section class="diag-step" id="step2">
+      <div class="diag-inner">
+        <p class="diag-eyebrow">Dimensions 1 &amp; 2 of 8</p>
+        <h2 class="diag-heading">Financials &amp; revenue clarity</h2>
+
+        <div class="q-block">
+          <p class="q-text">Are your revenues clearly broken down by client type, channel and geography?</p>
+          <div class="q-options" data-q="q4">
+            <button class="q-opt" data-val="0">No — it's aggregated in our accounts</button>
+            <button class="q-opt" data-val="1">Partially — we can extract this but it takes effort</button>
+            <button class="q-opt" data-val="2">Yes — we have a clean revenue waterfall by segment</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <p class="q-text">What is your level of client concentration?</p>
+          <div class="q-options" data-q="q5">
+            <button class="q-opt" data-val="0">Top 3 clients represent more than 60% of revenue</button>
+            <button class="q-opt" data-val="1">Top 3 clients represent 30–60% of revenue</button>
+            <button class="q-opt" data-val="2">No single client represents more than 20% of revenue</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <p class="q-text">Do you track net revenue retention (NRR) or equivalent recurring revenue metrics?</p>
+          <div class="q-options" data-q="q6">
+            <button class="q-opt" data-val="0">No — we don't track this formally</button>
+            <button class="q-opt" data-val="1">We track it informally but have no dashboard</button>
+            <button class="q-opt" data-val="2">Yes — we have a KPI dashboard with cohort and retention data</button>
+          </div>
+        </div>
+
+        <div class="diag-nav">
+          <button class="btn-back" onclick="goStep(1)">&larr; Back</button>
+          <button class="btn-next" id="next2" disabled onclick="goStep(3)">Continue &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STEP 3: Strategy & Organisation ── -->
+    <section class="diag-step" id="step3">
+      <div class="diag-inner">
+        <p class="diag-eyebrow">Dimensions 3 &amp; 4 of 8</p>
+        <h2 class="diag-heading">Strategy &amp; organisation</h2>
+
+        <div class="q-block">
+          <p class="q-text">How defined is your growth strategy for the next 3–5 years?</p>
+          <div class="q-options" data-q="q7">
+            <button class="q-opt" data-val="0">We operate reactively — no formal roadmap</button>
+            <button class="q-opt" data-val="1">We have a general direction but nothing documented</button>
+            <button class="q-opt" data-val="2">We have a documented strategy with market opportunity sizing</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <p class="q-text">How documented is your organisational structure and technology stack?</p>
+          <div class="q-options" data-q="q8">
+            <button class="q-opt" data-val="0">It's largely in people's heads — nothing formal</button>
+            <button class="q-opt" data-val="1">We have an org chart but no tech or IP documentation</button>
+            <button class="q-opt" data-val="2">We have a full org chart, tech stack map and IP register</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <p class="q-text">Does your management team run the business independently of the founders?</p>
+          <div class="q-options" data-q="q9">
+            <button class="q-opt" data-val="0">The business is heavily founder-dependent</button>
+            <button class="q-opt" data-val="1">There is a team but the founder is still central to operations</button>
+            <button class="q-opt" data-val="2">The team runs the business — founders are primarily strategic</button>
+          </div>
+        </div>
+
+        <div class="diag-nav">
+          <button class="btn-back" onclick="goStep(2)">&larr; Back</button>
+          <button class="btn-next" id="next3" disabled onclick="goStep(4)">Continue &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STEP 4: Legal & Deal Readiness ── -->
+    <section class="diag-step" id="step4">
+      <div class="diag-inner">
+        <p class="diag-eyebrow">Dimensions 5–8 of 8</p>
+        <h2 class="diag-heading">Legal, shareholding &amp; deal readiness</h2>
+
+        <div class="q-block">
+          <p class="q-text">Is your shareholding structure clean and fully documented?</p>
+          <div class="q-options" data-q="q10">
+            <button class="q-opt" data-val="0">There are complexities or gaps we haven't fully resolved</button>
+            <button class="q-opt" data-val="1">It's broadly clear but some documents need updating</button>
+            <button class="q-opt" data-val="2">Yes — cap table, shareholder agreements and obligations are all current</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <p class="q-text">Are your key contracts (clients, suppliers, leases) documented and transferable?</p>
+          <div class="q-options" data-q="q11">
+            <button class="q-opt" data-val="0">Many are verbal or informal</button>
+            <button class="q-opt" data-val="1">Most are written but change-of-control clauses are unclear</button>
+            <button class="q-opt" data-val="2">All key contracts are documented and we've reviewed transferability</button>
+          </div>
+        </div>
+
+        <div class="q-block">
+          <p class="q-text">Has your board or shareholders aligned on the goal and timeline for a liquidity event?</p>
+          <div class="q-options" data-q="q12">
+            <button class="q-opt" data-val="0">Not yet — this is early thinking</button>
+            <button class="q-opt" data-val="1">There is general alignment but no formal discussion</button>
+            <button class="q-opt" data-val="2">Yes — we have agreed objectives and a timeline in mind</button>
+          </div>
+        </div>
+
+        <div class="diag-nav">
+          <button class="btn-back" onclick="goStep(3)">&larr; Back</button>
+          <button class="btn-next" id="next4" disabled onclick="goStep(5)">See my score &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STEP 5: Results + email gate ── -->
+    <section class="diag-step" id="step5">
+      <div class="diag-inner results-inner">
+        <p class="diag-eyebrow">Your M&amp;A readiness assessment</p>
+        <h2 class="diag-heading">Your readiness score</h2>
+
+        <!-- Score display -->
+        <div class="score-card">
+          <div class="score-dial-wrap">
+            <svg class="score-dial" viewBox="0 0 120 120" width="120" height="120">
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#e2dfd9" stroke-width="8"/>
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#2c4a3e" stroke-width="8"
+                stroke-dasharray="326.7" stroke-dashoffset="326.7"
+                stroke-linecap="round"
+                transform="rotate(-90 60 60)"
+                id="dialArc"/>
+            </svg>
+            <div class="score-num-wrap">
+              <span class="score-num" id="scoreNum">–</span>
+              <span class="score-denom">/100</span>
+            </div>
+          </div>
+          <div class="score-meta">
+            <p class="score-rating" id="scoreRating"></p>
+            <p class="score-summary" id="scoreSummary"></p>
+          </div>
+        </div>
+
+        <!-- Dimension breakdown -->
+        <div class="breakdown" id="breakdown"></div>
+
+        <!-- Email gate -->
+        <div class="email-gate">
+          <h3 class="gate-title">Get your personalised gap report</h3>
+          <p class="gate-desc">Enter your email to receive a detailed breakdown of your top three readiness gaps and how to close them. No company name required.</p>
+
+          <!-- Honeypot (hidden from humans, bots fill it) -->
+          <input type="text" name="website" id="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
+
+          <form class="gate-form" id="gateForm" onsubmit="submitReport(event)">
+            <input type="email" class="gate-email" id="gateEmail" placeholder="your@email.com" required>
+            <!-- Turnstile widget -->
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAA_REPLACE_WITH_YOUR_KEY" data-theme="light"></div>
+            <button type="submit" class="btn-primary" style="margin-top:0">Send me the report &rarr;</button>
+          </form>
+          <p class="gate-note">We will never share your email or any information you have provided. No company name is required at any point.</p>
+        </div>
+
+        <!-- Confirmation (hidden until submit) -->
+        <div class="gate-confirm" id="gateConfirm" style="display:none">
+          <p class="confirm-icon">&#10003;</p>
+          <h3 class="confirm-title">Report on its way</h3>
+          <p class="confirm-msg">Check your inbox. Your personalised M&amp;A readiness gap report will arrive shortly.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/diagnostic.js"></script>
+</body>
+</html>
